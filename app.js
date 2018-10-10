@@ -18,7 +18,8 @@ if (app.get('env') !== 'development') {
 
 var corsOptions = {
     origin: [
-        'http://localhost:3000'
+        'http://localhost:3000',
+        'https://brain-buckets.herokuapp.com'
     ],
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     methods: ['ACCEPT', 'GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
