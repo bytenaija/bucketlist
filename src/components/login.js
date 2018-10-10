@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios'
 
 class Login extends Component {
-  BASE_URL = "http://localhost:8000/v1/";
+  BASE_URL = "https://brain-buckets.herokuapp.com/v1/";
   state = {
     email : '',
     password: '',
