@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
-import logo from './logo.svg';
+import {Link} from 'react-router-dom'
 import './App.css';
 import axios from 'axios'
 
-class App extends Component {
-  BASE_URL = "http://localhost:8000/v1/";
+class Signup extends Component {
+  BASE_URL = "https://brain-bucket-api.herokuapp.com/v1/";
   state = {
     email : '',
     password: '',
     error: null,
-    loggedIn: false
+    signUp: false
   }
   emailEnter(text) {
     this.setState({email: text.target.value});
@@ -28,10 +28,11 @@ class App extends Component {
       password: this.state.password
     };
 
-    axios.post(`${this.BASE_URL}auth/login`, payload).then(data =>{
+    axios.post(`${this.BASE_URL}auth/signup`, payload).then(data =>{
       if(data.data.success){
-        window.localStorage.token = data.data.token
-        this.setState({...this.state, loggedIn : true})
+        
+        this.setState({...this.state, signUp : true})
+        
         
       }else{
         this.setState({...this.state, error : data.data.message})
@@ -41,8 +42,8 @@ class App extends Component {
     
   }
   render() {
-    if (this.state.loggedIn === true) {
-      return <Redirect to='/bucketlist' />
+    if (this.state.signUp === true) {
+      return <Redirect to='/login' />
     }
     return (
       <div className="App">
@@ -52,14 +53,14 @@ class App extends Component {
         </div>
           <div className="login">
           <form id="login">
-          <h3>Login</h3>
+          <h3>Signup</h3>
           <input className="form-control" name="email" placeholder="email@gmail.com" type= "text" onKeyUp={text => this.emailEnter(text)}/>
           <input className="form-control" name="password" placeholder="Password" type= "password" onKeyUp={text => this.passwordEnter(text)}/>
-          <button onClick ={(event, action) => this.submit(event)} >Login</button>
+          <button onClick ={(event, action) => this.submit(event)} >Signup</button>
           </form>
           </div>
           <div className="signup">
-          <h3>Get Started by Signing up<a href="/signup"> here</a> </h3>
+          <h3>Already registered? Login <Link to="/login"> here</Link> </h3>
           </div>
         </header>
 
@@ -71,4 +72,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Signup;

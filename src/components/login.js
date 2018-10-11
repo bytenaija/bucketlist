@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
+import {Link} from 'react-router-dom'
 import './App.css';
 import axios from 'axios'
 
@@ -58,7 +59,7 @@ class Login extends Component {
           </form>
           </div>
           <div className="signup">
-          <h3>Get Started by Signing up<a href="/signup"> here</a> </h3>
+          <h3>Get Started by Signing up<Link to="/signup"> here</Link> </h3>
           </div>
         </header>
 
