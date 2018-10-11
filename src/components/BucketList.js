@@ -74,8 +74,6 @@ class BucketList extends Component {
       let searchTerm = e.target.value;
       this.setState({...this.state,page: 1, loading: true})
       setTimeout(()=>{
-
-      
         axios.get(`${this.BASE_URL}bucketlists/?q=${searchTerm}&page=${this.state.page}&limit=${this.state.limit}`,  { headers: { Authorization: `${window.localStorage.getItem('token')}` } })
             .then(data =>{
                 console.log(data)
