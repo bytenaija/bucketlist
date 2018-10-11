@@ -34,6 +34,7 @@ exports.read = (req, res, next)=>{
                 res.json({
                     success: true,
                     bucketlist
+                    
                 })
              })
             
